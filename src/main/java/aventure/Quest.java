@@ -1,9 +1,10 @@
-package aventure;
+package engine.object;
 
-public class Quest {
+import java.util.ArrayList;
 
-	public Quest() {
-		// TODO Auto-generated constructor stub
-	}
-
+public class Quest extends Event{
+	private boolean isCompleted;
+	private String objective;
+	private int progress;
+	private ArrayList<String> actions;
 }
