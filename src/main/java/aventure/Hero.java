@@ -1,27 +1,13 @@
-package aventure;
+package engine.player;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.Image;
 
-public class Hero extends Person {
-    private Inventory inventory;
-    private List<String> skills;
+import engine.map.Block;
 
-    public Hero(int id, String name, int health) {
-        super(id, name, health);
-        this.inventory = new Inventory();
-        this.skills = new ArrayList<>();
-    }
-
-    public void addSkill(String skill) {
-        skills.add(skill);
-    }
-
-    public void attack(Person enemy, int damage) {
-        enemy.takeDamage(damage);
-    }
-
-    public Inventory getInventory() {
-        return inventory;
-    }
+public class Hero extends Person{
+	public Hero(String name, int id, int health, Block position, Image imagePath) {
+		super(name,id, health, position, imagePath);
+	}
+	
 }
+
