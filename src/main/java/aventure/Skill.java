@@ -1,5 +1,5 @@
 package engine.stats;
 
-public class Inventory {
+public class Skill {
 
 }
