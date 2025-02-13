@@ -1,4 +1,4 @@
-package engine.stats;
+package aventure.engine.stats;
 
 public class Achievement {
 

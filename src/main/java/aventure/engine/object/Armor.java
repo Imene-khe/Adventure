@@ -1,4 +1,4 @@
-package engine.object;
+package aventure.engine.object;
 
 public class Armor extends Equipment {
 	    private int defense;

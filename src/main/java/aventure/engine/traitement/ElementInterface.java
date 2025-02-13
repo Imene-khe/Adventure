@@ -1,7 +1,8 @@
-package engine.traitement;
+package aventure.engine.traitement;
 
 import java.util.List;
 
+import aventure.engine.player.Antagonist;
 import engine.map.Block;
 import engine.player.*;
 

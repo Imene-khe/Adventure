@@ -1,4 +1,4 @@
-package engine.map;
+package aventure.engine.object;
 
 public class Block {
 	private int line;

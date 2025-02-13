@@ -1,5 +1,7 @@
 package aventure;
 
+import aventure.engine.player.Hero;
+
 public class Consumable extends Item {
     private String effect;
 

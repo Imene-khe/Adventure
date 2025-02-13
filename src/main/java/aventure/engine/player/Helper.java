@@ -1,8 +1,7 @@
-package engine.player;
+package aventure.engine.player;
 
 import java.awt.Image;
 
-import aventure.engine.player.Person;
 import engine.map.Block;
 
 public class Helper extends Person{

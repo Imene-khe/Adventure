@@ -1,4 +1,4 @@
-package engine.object;
+package aventure.engine.object;
 
 public abstract class Equipment {
 	private String name;
