@@ -1,4 +1,4 @@
-package engine.object;
+package aventure.engine.object;
 
 public class ManualWeapon extends Weapon {
 	private int range;

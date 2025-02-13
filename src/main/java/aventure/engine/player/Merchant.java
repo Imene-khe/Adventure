@@ -1,4 +1,4 @@
-package engine.player;
+package aventure.engine.player;
 
 import java.awt.Image;
 import engine.map.Block;

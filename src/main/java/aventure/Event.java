@@ -1,5 +1,6 @@
 package engine.object;
 
+
 public abstract class Event {
 	private String name;
 	private String description;

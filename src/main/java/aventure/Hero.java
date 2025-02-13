@@ -2,6 +2,7 @@ package engine.player;
 
 import java.awt.Image;
 
+import aventure.engine.player.Person;
 import engine.map.Block;
 
 public class Hero extends Person{

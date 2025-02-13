@@ -1,4 +1,4 @@
-package engine.player;
+package aventure.engine.player;
 
 public class NonPlayableCharacter {
 

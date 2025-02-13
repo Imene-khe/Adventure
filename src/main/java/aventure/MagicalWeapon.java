@@ -1,5 +1,7 @@
 package engine.object;
 
+import aventure.engine.object.Weapon;
+
 public class MagicalWeapon extends Weapon{
 	private String type;
 	private String power;
