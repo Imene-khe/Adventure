@@ -1,18 +1,19 @@
 package aventure.engine.player;
 
-import java.awt.Image;
+import aventure.engine.object.Block;
 
-import engine.map.Block;
+public class Antagonist {
+    private Block position; // Position actuelle
 
-public class Antagonist extends Person{
+    public Antagonist(Block startPosition) {
+        this.position = startPosition;
+    }
 
-	public Antagonist(String name, int id, int health, Block position, Image imagePath) {
-		super(name, id, health, position, imagePath);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public Antagonist(Block position) {
-		// TODO Auto-generated constructor stub
-		super(position);
-	}
+    public Block getPosition() { //  Récupère la position
+        return position;
+    }
+
+    public void setPosition(Block newPosition) { //  Change la position
+        this.position = newPosition;
+    }
 }
