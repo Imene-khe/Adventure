@@ -1,4 +1,4 @@
-package aventure.Gui;
+package aventure.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import aventure.engine.map.Block;
 import aventure.engine.map.Map;
-import aventure.Gui.*;
+import aventure.gui.*;
 
 public class GameDisplay extends JPanel {
 
