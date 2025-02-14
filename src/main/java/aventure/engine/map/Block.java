@@ -28,8 +28,5 @@ public class Block {
 		return "Block [line=" + line + ", column=" + column + "]";
 	}
 	
-	public void putElement() {
-		isOccuped=true;
-	}
 
 }

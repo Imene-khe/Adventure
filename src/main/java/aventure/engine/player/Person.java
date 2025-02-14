@@ -12,19 +12,35 @@ public class Person {
     private String name;
     private int id;
     private int health;
-    //private Block position;  passage en commentaire en attendant la liaison entre map et person
+    private Block position;
     private ImageIcon image;
 
     // Constructeur pour les personnages mobiles
-    public Person(String name, int id, int health, String imagePath) {
+    public Person(String name, int id, int health, String imagePath, Block position) {
         this.name = name;
         this.id = id;
         this.health = health;
         // Utiliser un chemin relatif pour l'image
         this.image = new ImageIcon(getClass().getResource(imagePath)); // imagePath doit être relatif
+        this.position=position;
     }
 
-    // Méthode pour afficher l'info et l'image
+    public Person(String name, int id, int health) {
+		// TODO Auto-generated constructor stub
+    	 this.name = name;
+         this.id = id;
+         this.health = health;
+	}
+
+	public Person(String string, int i, int j, String imagePath) {
+		// TODO Auto-generated constructor stub
+		this.name = name;
+        this.id = id;
+        this.health = health;
+        this.image = new ImageIcon(getClass().getResource(imagePath)); // imagePath doit être relatif
+	}
+
+	// Méthode pour afficher l'info et l'image
     public void showPersonInfo() {
         // Créer une fenêtre JFrame pour afficher le personnage
         JFrame frame = new JFrame(name + " (" + id + ")");
