@@ -1,61 +1,56 @@
 package aventure.engine.player;
 
-import aventure.engine.object.Block;
+import aventure.engine.map.Block;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 import java.awt.Image;
 
-public class Person {		//mettre la classe en abstract
+public class Person {
+    private String name;
+    private int id;
+    private int health;
+    //private Block position;  passage en commentaire en attendant la liaison entre map et person
+    private ImageIcon image;
 
-		private String name;
-		private int id;
-		private int health;
-		private Block position;
-		private Image image;
-		//ajout d'un attribut vitesse
-		
-		public Person(String name, int id, int health, Block position, Image imagePath) {		//constructeur pour les personnages mobiles faisant parti de l'histoire
-			// TODO Auto-generated constructor stub
-			this.name=name;
-			this.id = id;
-			this.health=health;
-			this.position=position;
-			this.image=new ImageIcon(imagePath).getImage();
-		}
-		
-		public 
-		
+    // Constructeur pour les personnages mobiles
+    public Person(String name, int id, int health, String imagePath) {
+        this.name = name;
+        this.id = id;
+        this.health = health;
+        // Utiliser un chemin relatif pour l'image
+        this.image = new ImageIcon(getClass().getResource(imagePath)); // imagePath doit être relatif
+    }
 
-		public String getName() {
-			return name;
-		}
+    // Méthode pour afficher l'info et l'image
+    public void showPersonInfo() {
+        // Créer une fenêtre JFrame pour afficher le personnage
+        JFrame frame = new JFrame(name + " (" + id + ")");
+        frame.setLayout(new BorderLayout());
 
-		public void setName(String name) {
-			this.name = name;
-		}
+        // Créer un JLabel pour afficher l'image
+        JLabel imageLabel = new JLabel(image);  // Afficher l'image sur le JLabel
 
-		public int getId() {
-			return id;
-		}
+        // Créer un JPanel pour afficher l'information (nom et ID)
+        JPanel infoPanel = new JPanel();
+        infoPanel.add(new JLabel("Nom : " + name));
+        infoPanel.add(new JLabel("ID : " + id));
 
-		public void setId(int id) {
-			this.id = id;
-		}
+        // Ajouter les éléments à la fenêtre
+        frame.add(imageLabel, BorderLayout.CENTER);  // Afficher l'image au centre
+        frame.add(infoPanel, BorderLayout.SOUTH);    // Afficher l'info en bas
 
-		public int getHealth() {
-			return health;
-		}
+        // Configurer la fenêtre
+        frame.setSize(400, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
 
-		public void setHealth(int health) {
-			this.health = health;
-		}
-
-		public Block getPosition() {
-			return position;
-		}
-
-		public void setPosition(Block position) {
-			this.position = position;
-		}
-		
-		
+    public static void main(String[] args) {
+        // Créer une instance de Person avec une image et afficher l'info
+        Person person = new Person("Alice", 1, 100, "/aventure/image/imageHero.png");
+        person.showPersonInfo();
+    }
 }
