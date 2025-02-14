@@ -1,6 +1,6 @@
 package aventure.engine.player;
 
-import engine.map.Block;
+import aventure.engine.object.Block;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 
