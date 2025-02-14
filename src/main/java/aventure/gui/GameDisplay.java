@@ -15,12 +15,18 @@ public class GameDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Map map;
 
-    // Setter pour la carte afin de pouvoir la passer à GameDisplay depuis le main
-    public void setMap(Map map) {
+	public GameDisplay() {
+		// Créer une carte avec 50 lignes et 50 colonnes (par exemple)
+       this.map=map;
+        //Block b = map.getBlock(1,1);
+        //b.putElement();
+	}
+	
+	public void setMap(Map map) {
         this.map = map;
-        repaint();  // Redessiner lorsque la carte est définie
+        repaint();  // Redessiner la carte après changement
     }
-
+	
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);  // Appeler la méthode de la classe parente pour s'assurer que tout soit bien initialisé
@@ -49,16 +55,13 @@ public class GameDisplay extends JPanel {
                             g.fillRect(block.getColumn() * blockSize, block.getLine() * blockSize, blockSize, blockSize);
                         }
                     }
-                    // Alterner les couleurs en fonction des indices
-                    
-                
                 }
             }
         }
     }
     
  // Méthode principale pour tester
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         // Créer une carte avec 50 lignes et 50 colonnes (par exemple)
         Map map = new Map(50,50);
         Block b = map.getBlock(1,1);
@@ -79,5 +82,5 @@ public class GameDisplay extends JPanel {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fermer l'application lorsque la fenêtre se ferme
         frame.setVisible(true);  // Afficher la fenêtre
-    }
+    }*/
 }
