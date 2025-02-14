@@ -32,7 +32,7 @@ public class GameDisplay extends JPanel {
 
             // Dessiner la carte (les blocs)
             for (int lineIndex = 0; lineIndex < map.getLineCount(); lineIndex++) {
-                for (int columnIndex = 0; columnIndex < map.getColumnCount(); columnIndex++) {
+                for (int columnIndex = 0; columnIndex < map.getLineCount(); columnIndex++) {
                     Block block = blocks[lineIndex][columnIndex];
                     if(block.isOccuped()) {
                     	 g.setColor(Color.RED);

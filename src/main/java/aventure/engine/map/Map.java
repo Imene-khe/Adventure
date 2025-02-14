@@ -1,7 +1,7 @@
 package aventure.engine.map;
 
 import java.util.HashMap;
-import aventure.engine.object.Block;
+
 import aventure.engine.object.Obstacle;
 import aventure.Item;
 
@@ -67,5 +67,15 @@ public class Map {
         int column = block.getColumn();
         return line == 0 || line == lineCount - 1 || column == 0 || column == columnCount - 1;
     }
+
+	public Block[][] getBlocks() {
+		// TODO Auto-generated method stub
+		return blocks;
+	}
+
+	public int getLineCount() {
+		// TODO Auto-generated method stub
+		return lineCount;
+	}
 }
 
