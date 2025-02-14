@@ -17,7 +17,7 @@ public class GameDisplay extends JPanel {
 
 	public GameDisplay() {
 		// Créer une carte avec 50 lignes et 50 colonnes (par exemple)
-       this.map=map;
+       this.map= new Map(50,50);
         //Block b = map.getBlock(1,1);
         //b.putElement();
 	}

@@ -32,12 +32,12 @@ public class MainGUI extends JFrame {
         contentPane.add(dashboard, BorderLayout.CENTER);  // Ajouter GameDisplay au centre
 
         // Créer un panel inventoryPanel avec FlowLayout pour la zone SOUTH
-        JPanel inventoryPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // FlowLayout avec alignement à gauche
-        inventoryPanel.add(new JButton("Bouton 1"));
-        inventoryPanel.add(new JButton("Bouton 2"));
-        inventoryPanel.add(new JButton("Bouton 3"));
-        inventoryPanel.add(new JButton("Bouton 4"));
-        inventoryPanel.add(new JButton("Bouton 5"));
+        JPanel inventoryPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // FlowLayout avec alignement à gauche
+        inventoryPanel.add(new JButton("Objet 1"));
+        inventoryPanel.add(new JButton("Objet 2"));
+        inventoryPanel.add(new JButton("Objet 3"));
+        inventoryPanel.add(new JButton("Objet 4"));
+        inventoryPanel.add(new JButton("Objet 5"));
 
         // Ajouter inventoryPanel dans la zone SOUTH du BorderLayout
         contentPane.add(inventoryPanel, BorderLayout.SOUTH);
