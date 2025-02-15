@@ -1,15 +1,19 @@
 package aventure.engine.player;
 
-import java.awt.Image;
+import aventure.engine.map.Block;
 
-import javax.swing.ImageIcon;
+public class Hero {
+    private Block position;
 
-import aventure.engine.*;
+    public Hero(Block startPosition) {
+        this.position = startPosition;
+    }
 
-public class Hero extends Person{
-	
-	public Hero(String name, int id, int health) {
-		super(name,id, health);
-	}
+    public Block getPosition() { // Ajout du getter
+        return position;
+    }
+
+    public void setPosition(Block newPosition) { // Ajout du setter
+        this.position = newPosition;
+    }
 }
-
