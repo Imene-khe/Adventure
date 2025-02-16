@@ -4,12 +4,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import aventure.engine.map.Block;
 import aventure.engine.map.Map;
-import aventure.engine.player.Hero;
+import aventure.engine.player.*;
 
 public class GameDisplay extends JPanel {
 
@@ -18,13 +19,16 @@ public class GameDisplay extends JPanel {
     private static final int BLOCK_SIZE = 32;
     private Map map;
     private Hero hero;
+    private Antagonist enemy;
+    private ArrayList<Antagonist> enemies;
     private HashMap<String, Image> tileset;
 
     public GameDisplay() {
         try {
             this.map = new Map(GRID_SIZE, GRID_SIZE);
-            this.hero = new Hero(map.getBlock(GRID_SIZE / 2, GRID_SIZE / 2));
+            this.hero = new Hero(map.getBlock(GRID_SIZE / 2, GRID_SIZE / 2),100);
             this.tileset = new HashMap<>();
+            this.enemy = new Antagonist(map.getBlock(10, 10));
             loadImages();
             System.out.println("✅ GameDisplay créé avec succès !");
         } catch (Exception e) {
@@ -135,6 +139,10 @@ public class GameDisplay extends JPanel {
         //  Dessiner le héros
         if (hero != null) {
             hero.draw(g, BLOCK_SIZE);
+        }
+        // Dessiner les enemies
+        if(enemy != null) {
+        	enemy.draw(g,BLOCK_SIZE);
         }
 
         //  Dessiner la barre de vie

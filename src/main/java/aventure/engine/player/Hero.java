@@ -23,13 +23,10 @@ public class Hero extends Person {
     	loadHeroSprite();
     }
     public void takeDamage(int amount) {
-    	int newHealth=getHealth()-amount;
-    	setHealth(newHealth);
-        if (getHealth() < 0) {
-        	setHealth(0);  // Empêche d’avoir une vie négative
-        }
+        setHealth(Math.max(0, getHealth() - amount));
         System.out.println("💥 Héros touché ! Vie restante : " + getHealth() + "%");
     }
+
 
 
     // Charger l’image du hero

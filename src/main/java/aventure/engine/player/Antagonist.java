@@ -1,19 +1,38 @@
 package aventure.engine.player;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import aventure.engine.map.Block;
 
-public class Antagonist {
-    private Block position; // Position actuelle
+public class Antagonist extends Person {
+	 private int spriteX = 0;  // Animation frame (horizontale)
+	 private int spriteY = 0;  // Direction (verticale)
+     private Image enemySprite;  //  Stocke l'image du héros
 
-    public Antagonist(Block startPosition) {
-        this.position = startPosition;
-    }
+     public Antagonist(Block startPosition) {
+        super(startPosition);
+        loadSprite();
+     }
 
-    public Block getPosition() { //  Récupère la position
-        return position;
-    }
+     private void loadSprite() {
+        try {
+            enemySprite = ImageIO.read(new File("src/main/java/aventure/image/img/Enemies/Skeleton.png"));
+        } catch (IOException e) {
+            System.out.println("❌ ERREUR : Impossible de charger l’image !");
+            e.printStackTrace();
+        }
+     }
 
-    public void setPosition(Block newPosition) { //  Change la position
-        this.position = newPosition;
-    }
+     public void draw(Graphics g, int blockSize) {
+		int drawX = getPosition().getColumn() * blockSize;
+        int drawY = getPosition().getLine() * blockSize;
+        g.drawImage(enemySprite, drawX + blockSize, drawY, drawX, drawY + blockSize, 0, 0, 32,32, null);
+	}
+    
 }
+
