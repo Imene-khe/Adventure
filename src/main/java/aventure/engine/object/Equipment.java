@@ -1,6 +1,6 @@
 package aventure.engine.object;
 
-public abstract class Equipment {
+public  class Equipment {
 	private String name;
 	private int price;
 	
