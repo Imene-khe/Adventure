@@ -1,6 +1,6 @@
 package aventure.engine.player;
 
-import aventure.engine.object.Block;
+import aventure.engine.map.Block;
 
 public class Antagonist {
     private Block position; // Position actuelle

@@ -15,7 +15,9 @@ public class Person {
     private Block position;
     private ImageIcon image;
 
-    // Constructeur pour les personnages mobiles
+    
+
+	// Constructeur pour les personnages mobiles
     public Person(String name, int id, int health, String imagePath, Block position) {
         this.name = name;
         this.id = id;
@@ -35,10 +37,20 @@ public class Person {
 	public Person(String string, int i, int j, String imagePath) {
 		// TODO Auto-generated constructor stub
 		this.name = name;
-        this.id = id;
-        this.health = health;
+        this.id = i;
+        this.health = j;
         this.image = new ImageIcon(getClass().getResource(imagePath)); // imagePath doit être relatif
 	}
+	
+	public Person(Block position, int health) {
+		this.position=position;
+		this.health=health;
+	}
+	
+	public Person(Block position) {
+		this.position=position;
+	}
+	
 
 	// Méthode pour afficher l'info et l'image
     public void showPersonInfo() {
@@ -63,10 +75,45 @@ public class Person {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
+    
+    public String getName() {
+		return name;
+	}
 
-    public static void main(String[] args) {
-        // Créer une instance de Person avec une image et afficher l'info
-        Person person = new Person("Alice", 1, 100, "/aventure/image/imageHero.png");
-        person.showPersonInfo();
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public Block getPosition() {
+		return position;
+	}
+
+	public void setPosition(Block position) {
+		this.position = position;
+	}
+
+	public ImageIcon getImage() {
+		return image;
+	}
+
+	public void setImage(ImageIcon image) {
+		this.image = image;
+	}
+
 }

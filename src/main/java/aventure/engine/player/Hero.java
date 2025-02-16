@@ -7,23 +7,28 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import aventure.engine.map.Block;
 
-public class Hero {
-    private Block position;
+public class Hero extends Person {
     private int spriteX = 0;  // Animation frame (horizontale)
     private int spriteY = 0;  // Direction (verticale)
     private boolean isFlipped = false;  //  Permet d'inverser l'image pour la gauche
     private Image heroSprite;  //  Stocke l'image du héros
-    private int health = 100;  //  Vie du héros
 
-
-    public Hero(Block startPosition) {
-        this.position = startPosition;
+    public Hero(Block startPosition, int health) {
+        super(startPosition, health);
         loadHeroSprite();
     }
+    
+    public Hero(Block position) {
+    	super(position);
+    	loadHeroSprite();
+    }
     public void takeDamage(int amount) {
-        health -= amount;
-        if (health < 0) health = 0;  // Empêche d’avoir une vie négative
-        System.out.println("💥 Héros touché ! Vie restante : " + health + "%");
+    	int newHealth=getHealth()-amount;
+    	setHealth(newHealth);
+        if (getHealth() < 0) {
+        	setHealth(0);  // Empêche d’avoir une vie négative
+        }
+        System.out.println("💥 Héros touché ! Vie restante : " + getHealth() + "%");
     }
 
 
@@ -65,8 +70,8 @@ public class Hero {
 
     // 
     public void draw(Graphics g, int blockSize) {
-        int drawX = position.getColumn() * blockSize;
-        int drawY = position.getLine() * blockSize;
+        int drawX = super.getPosition().getColumn() * blockSize;
+        int drawY = super.getPosition().getLine() * blockSize;
 
         if (isFlipped) {
             //  Dessine l’image inversée pour la gauche
@@ -80,7 +85,7 @@ public class Hero {
     }
 
     // Récupérer la position actuelle du héros
-    public Block getPosition() {
+    /*public Block getPosition() {
         return position;
     }
 
@@ -91,6 +96,6 @@ public class Hero {
     
     public int getHealth() {
         return health;
-    }
+    }*/
     
 }

@@ -130,11 +130,6 @@ public class GameDisplay extends JPanel {
                         System.out.println("⚠ Ennemi non trouvé : " + enemyType);
                     }
                 }
-                
-
-
-
-            
         }
 
         //  Dessiner le héros
