@@ -9,6 +9,8 @@ public class Map {
     private HashMap<Block, Boolean> terrainBlocked = new HashMap<>();
     private HashMap<Block, String> staticObjects = new HashMap<>();
     private HashMap<Block, String> staticTerrain = new HashMap<>();
+    private HashMap<Block, String> enemies = new HashMap<>();
+
 
     private int lineCount;
     private int columnCount;
@@ -32,7 +34,7 @@ public class Map {
                 double random = Math.random();
                 if (random < 0.15) {
                     staticTerrain.put(block, "water");
-                } else if (random < 0.3) {
+                } else if (random < 0.2) {
                     staticTerrain.put(block, "path");
                 } else {
                     staticTerrain.put(block, "grass");
@@ -53,7 +55,14 @@ public class Map {
                 } else {
                     staticTerrain.put(block, "grass");
                 }
+                
+                if (random < 0.12) {  // pour les squelettes
+                    enemies.put(block, "skeleton");
+                } else if (random < 0.15) {  // pour le slime
+                    enemies.put(block, "slime");
+                }
             }
+            
         }
         generateObjects();
 
@@ -63,31 +72,55 @@ public class Map {
         return staticTerrain;
     }
 
-
     private void generateObjects() {
         for (int lineIndex = 0; lineIndex < lineCount; lineIndex++) {
             for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
                 Block block = blocks[lineIndex][columnIndex];
 
-                if (staticTerrain.get(block) != null && staticTerrain.get(block).equals("grass")) {
+                // Vérifie si la case a un terrain défini, sinon on lui met "grass" par défaut
+                if (!staticTerrain.containsKey(block)) {
+                    staticTerrain.put(block, "grass");  
+                }
+
+                String terrainType = staticTerrain.get(block);
+
+                // Ajoute des obstacles uniquement sur l'herbe
+                if (terrainType.equals("grass")) {  
                     double rand = Math.random();
 
-                    if (rand < 0.05) {  // 🔄 Augmente les arbres à 5%
-                        staticObjects.put(block, "tree");
+                    if (rand < 0.05) {  
+                        staticObjects.put(block, "tree");   // Arbre
                         setTerrainBlocked(block, true);
-                    } else if (rand < 0.08) {  // 🔄 Augmente les maisons à 3%
-                        staticObjects.put(block, "house");
+                    } else if (rand < 0.08) {  
+                        staticObjects.put(block, "house");  // Maison
                         setTerrainBlocked(block, true);
-                    } else if (rand < 0.10) {  // 🔄 Ajoute plus de coffres (2%)
-                        staticObjects.put(block, "chest");
+                    } else if (rand < 0.10) {  
+                        staticObjects.put(block, "chest");  // Coffre
                         setTerrainBlocked(block, true);
                     }
+                }
+
+                // Génère des ennemis uniquement sur les chemins marrons
+                if (terrainType.equals("path")) {  
+                    double rand = Math.random();
+                    if (rand < 0.05) {  
+                        enemies.put(block, "skeleton");   // Squelette
+                    } else if (rand < 0.10) {  
+                        enemies.put(block, "slime");      // Slime
+                    } else if (rand < 0.15) {  
+                        enemies.put(block, "slime_green"); // Slime vert
                     }
+                }
+
+                // Vérifie que le terrain est bien reconnu
+                if (!terrainType.equals("grass") && !terrainType.equals("path") && !terrainType.equals("water")) {
+                    System.out.println("Terrain inconnu corrigé : " + terrainType);
                 }
             }
         }
- 
+    }
 
+   
 
     public boolean isBlocked(Block block) {
         return obstacles.containsKey(block) || terrainBlocked.getOrDefault(block, false) || 
@@ -119,5 +152,9 @@ public class Map {
 
     public HashMap<Block, String> getStaticObjects() {
         return staticObjects;
+    }
+    
+    public HashMap<Block, String> getEnemies() {
+        return enemies;
     }
 }

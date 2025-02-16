@@ -49,14 +49,16 @@ public class MainGUI extends JFrame {
             newPos = dashboard.getMap().getBlock(currentPos.getLine() + 1, currentPos.getColumn());
             dashboard.getHero().moveDown();
         }
+        
+        // pour surveiller les beugs de mouvement 
 
         if (!dashboard.getMap().isBlocked(newPos)) {
             dashboard.repaint(currentPos.getColumn() * 32, currentPos.getLine() * 32, 32, 32); // 🔥 Effacer l’ancienne position
             dashboard.getHero().setPosition(newPos);
-            System.out.println("🕹 Héros déplacé à : " + newPos.getLine() + ", " + newPos.getColumn());
+            System.out.println(" Héros déplacé à : " + newPos.getLine() + ", " + newPos.getColumn());
             dashboard.repaint(newPos.getColumn() * 32, newPos.getLine() * 32, 32, 32); // 🔥 Redessine uniquement la nouvelle position
         } else {
-            System.out.println("🚧 Déplacement bloqué !");
+            System.out.println(" Déplacement bloqué !");
         }
     }
 
