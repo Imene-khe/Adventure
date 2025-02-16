@@ -73,9 +73,9 @@ public class Map {
                     double rand = Math.random();
                     if (rand < 0.02) {
                         staticObjects.put(block, "tree");
-                    } else if (rand < 0.01) {
+                    } else if (rand < 0.02) {
                         staticObjects.put(block, "house");
-                    } else if (rand < 0.015) {
+                    } else if (rand < 0.02) {
                         staticObjects.put(block, "chest");
                     }
 
