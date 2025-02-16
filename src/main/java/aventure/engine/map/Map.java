@@ -10,8 +10,6 @@ public class Map {
     private HashMap<Block, String> staticObjects = new HashMap<>();
     private HashMap<Block, String> staticTerrain = new HashMap<>();
     private HashMap<Block, String> enemies = new HashMap<>();
-
-
     private int lineCount;
     private int columnCount;
 
