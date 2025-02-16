@@ -7,12 +7,14 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import aventure.engine.map.Block;
 import aventure.engine.map.Map;
+import aventure.engine.stats.InventoryGUI;
 
 public class MainGUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private GameDisplay dashboard;
     private Map map;
+    private InventoryGUI inventory;
 
     public MainGUI() {
         super("Aventure - Déplacement du Héros");
@@ -20,7 +22,9 @@ public class MainGUI extends JFrame {
         setSize(800, 800);
         this.map = new Map(30, 30);
         this.dashboard = new GameDisplay();
+        this.inventory=new InventoryGUI();
         add(dashboard, BorderLayout.CENTER);
+        add(inventory,BorderLayout.SOUTH);
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
