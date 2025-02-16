@@ -81,8 +81,7 @@ public class Map {
                 }
 
                 String terrainType = staticTerrain.get(block);
-
-                // Ajoute des obstacles uniquement sur l'herbe
+                
                 if (terrainType.equals("grass")) {  
                     double rand = Math.random();
 
