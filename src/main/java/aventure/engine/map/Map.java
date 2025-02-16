@@ -94,8 +94,10 @@ public class Map {
                     } else if (rand < 0.08) {  
                         staticObjects.put(block, "house");  // Maison
                         setTerrainBlocked(block, true);
-                    } else if (rand < 0.10) {  
+                    } else if (rand < 0.10) {
+                    	
                         staticObjects.put(block, "chest");  // Coffre
+                        
                         setTerrainBlocked(block, true);
                     }
                 }
