@@ -71,24 +71,22 @@ public class Map {
 
                 if (staticTerrain.get(block) != null && staticTerrain.get(block).equals("grass")) {
                     double rand = Math.random();
-                    if (rand < 0.02) {
-                        staticObjects.put(block, "tree");
-                    } else if (rand < 0.02) {
-                        staticObjects.put(block, "house");
-                    } else if (rand < 0.02) {
-                        staticObjects.put(block, "chest");
-                    }
 
-                    // Empêcher le passage sur les objets fixes
-                    if (staticObjects.containsKey(block)) {
+                    if (rand < 0.05) {  // 🔄 Augmente les arbres à 5%
+                        staticObjects.put(block, "tree");
                         setTerrainBlocked(block, true);
+                    } else if (rand < 0.08) {  // 🔄 Augmente les maisons à 3%
+                        staticObjects.put(block, "house");
+                        setTerrainBlocked(block, true);
+                    } else if (rand < 0.10) {  // 🔄 Ajoute plus de coffres (2%)
+                        staticObjects.put(block, "chest");
+                        setTerrainBlocked(block, true);
+                    }
                     }
                 }
             }
         }
-    }
-
-
+ 
 
 
     public boolean isBlocked(Block block) {
