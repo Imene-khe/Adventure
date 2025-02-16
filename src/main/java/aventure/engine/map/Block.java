@@ -3,7 +3,7 @@ package aventure.engine.map;
 public class Block {
     private int line;
     private int column;
-    private boolean isOccupied; // Correction du nom
+    private boolean isOccupied;
 
     public Block(int line, int column) {
         this.line = line;
@@ -19,11 +19,11 @@ public class Block {
         return column;
     }
 
-    public boolean isOccupied() { // Correction du getter
+    public boolean isOccupied() {
         return isOccupied;
     }
 
-    public void setOccupied(boolean isOccupied) { // Ajout du setter
+    public void setOccupied(boolean isOccupied) {
         this.isOccupied = isOccupied;
     }
 

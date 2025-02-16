@@ -2,12 +2,14 @@ package aventure.engine.map;
 
 import java.util.HashMap;
 import aventure.engine.object.Obstacle;
-import aventure.Item;
 
 public class Map {
     private Block[][] blocks;
     private HashMap<Block, Obstacle> obstacles = new HashMap<>();
-    private HashMap<Block, Item> items = new HashMap<>();
+    private HashMap<Block, Boolean> terrainBlocked = new HashMap<>();
+    private HashMap<Block, String> staticObjects = new HashMap<>();
+    private HashMap<Block, String> staticTerrain = new HashMap<>();
+
     private int lineCount;
     private int columnCount;
 
@@ -21,51 +23,103 @@ public class Map {
                 blocks[lineIndex][columnIndex] = new Block(lineIndex, columnIndex);
             }
         }
-    }
 
-    public Block getBlock(int line, int column) {
-        if (line < 0 || line >= lineCount || column < 0 || column >= columnCount) {
-            throw new IllegalArgumentException("Coordonnées hors limites !");
+        for (int lineIndex = 0; lineIndex < lineCount; lineIndex++) {
+            for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+                Block block = blocks[lineIndex][columnIndex];
+
+                // Définir le terrain aléatoire
+                double random = Math.random();
+                if (random < 0.15) {
+                    staticTerrain.put(block, "water");
+                } else if (random < 0.3) {
+                    staticTerrain.put(block, "path");
+                } else {
+                    staticTerrain.put(block, "grass");
+                }
+            }
         }
-        return blocks[line][column];
+
+        for (int lineIndex = 0; lineIndex < lineCount; lineIndex++) {
+            for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+                Block block = blocks[lineIndex][columnIndex];
+
+                // Définition du type de terrain
+                double random = Math.random();
+                if (random < 0.15) {
+                    staticTerrain.put(block, "water");
+                } else if (random < 0.3) {
+                    staticTerrain.put(block, "path");
+                } else {
+                    staticTerrain.put(block, "grass");
+                }
+            }
+        }
+        generateObjects();
+
+    }
+    
+    public HashMap<Block, String> getStaticTerrain() {
+        return staticTerrain;
     }
 
-    public void addObstacle(Block block, Obstacle obstacle) {
-        obstacles.put(block, obstacle);
-        block.setOccupied(true); 
+
+    private void generateObjects() {
+        for (int lineIndex = 0; lineIndex < lineCount; lineIndex++) {
+            for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+                Block block = blocks[lineIndex][columnIndex];
+
+                if (staticTerrain.get(block) != null && staticTerrain.get(block).equals("grass")) {
+                    double rand = Math.random();
+                    if (rand < 0.02) {
+                        staticObjects.put(block, "tree");
+                    } else if (rand < 0.01) {
+                        staticObjects.put(block, "house");
+                    } else if (rand < 0.015) {
+                        staticObjects.put(block, "chest");
+                    }
+
+                    // Empêcher le passage sur les objets fixes
+                    if (staticObjects.containsKey(block)) {
+                        setTerrainBlocked(block, true);
+                    }
+                }
+            }
+        }
     }
 
-    public void addItem(Block block, Item item) {
-        items.put(block, item);
-    }
+
+
 
     public boolean isBlocked(Block block) {
-        return obstacles.containsKey(block);
+        return obstacles.containsKey(block) || terrainBlocked.getOrDefault(block, false) || 
+               (staticTerrain.containsKey(block) && staticTerrain.get(block).equals("water")) || 
+               staticObjects.containsKey(block);
     }
 
-    public boolean hasItem(Block block) {
-        return items.containsKey(block);
+    public void setTerrainBlocked(Block block, boolean blocked) {
+        terrainBlocked.put(block, blocked);
     }
 
-    public Item pickUpItem(Block block) {
-        return items.remove(block);
-    }
-
-    public boolean isOnBorder(Block block) {
-        int line = block.getLine();
-        int column = block.getColumn();
-        return line == 0 || line == lineCount - 1 || column == 0 || column == columnCount - 1;
-    }
-
-    public Block[][] getBlocks() {
-        return blocks;
+    public int getColumnCount() {
+        return columnCount;
     }
 
     public int getLineCount() {
         return lineCount;
     }
+    
+    public Block[][] getBlocks() {
+        return blocks;
+    }
 
-    public int getColumnCount() {
-        return columnCount;
+
+    public Block getBlock(int line, int column) {
+        return blocks[line][column];
+    }
+    
+
+    public HashMap<Block, String> getStaticObjects() {
+        return staticObjects;
     }
 }
