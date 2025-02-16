@@ -3,14 +3,10 @@ package aventure.engine.object;
 public abstract class Equipment {
 	private String name;
 	private int price;
-	private int durabilty;
 	
-	public Equipment() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public int getDurabilty() {
-		return durabilty;
+	public Equipment(String name, int price) {
+		this.name=name;
+		this.price=price;
 	}
 	
 	public String getName() {
@@ -21,10 +17,6 @@ public abstract class Equipment {
 		return price;
 	}
 	
-	public void setDurabilty(int durabilty) {
-		this.durabilty = durabilty;
-	}
-	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -32,5 +24,4 @@ public abstract class Equipment {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	//juste pour voir
 }

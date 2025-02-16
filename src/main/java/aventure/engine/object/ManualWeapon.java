@@ -1,27 +1,32 @@
 package aventure.engine.object;
 
 public class ManualWeapon extends Weapon {
-	private int range;
-	private int attackSpeed;
+	private double useTime;
+	private String specialAbility;
 	
-	public ManualWeapon() {
+	public ManualWeapon(String name,int price, int damage, double useTime, String specialAbility) {
 		// TODO Auto-generated constructor stub
+		super(name, price,damage);
+		this.useTime=useTime;
+		this.specialAbility=specialAbility;
 	}
 
-	public int getRange() {
-		return range;
+	public double getUseTime() {
+		return useTime;
 	}
 
-	public void setRange(int range) {
-		this.range = range;
+	public void setUseTime(double useTime) {
+		this.useTime = useTime;
 	}
 
-	public int getAttackSpeed() {
-		return attackSpeed;
+	public String getSpecialAbility() {
+		return specialAbility;
 	}
 
-	public void setAttackSpeed(int attackSpeed) {
-		this.attackSpeed = attackSpeed;
+	public void setSpecialAbility(String specialAbility) {
+		this.specialAbility = specialAbility;
 	}
+
+	
 	
 }
